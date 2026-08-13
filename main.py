@@ -23,6 +23,9 @@ def main():
     response = client.chat.completions.create(
         model="openrouter/free", messages=messages
     )
+    if response.usage:
+        print(f"Prompt tokens: {response.usage.prompt_tokens}")
+        print(f"Response tokens: {response.usage.completion_tokens}")
     print(response.choices[0].message.content)
 
 
